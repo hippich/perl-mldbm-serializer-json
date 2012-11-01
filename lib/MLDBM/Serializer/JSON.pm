@@ -12,7 +12,7 @@ MLDBM::Serializer::JSON - DBM serializer uses JSON for language interoperability
 
 =cut
 
-$VERSION = '0.001';
+$VERSION = '0.01';
 @ISA = qw(MLDBM::Serializer);
 
 =head1 SYNOPSIS
@@ -66,6 +66,8 @@ deserialize a json string into an array for MLDBM
 =cut
 
 sub deserialize {
+    return unless $_[1];
+
     my ($obj) = JSON::Any->jsonToObj($_[1]);
     return $obj->[0];
 }
